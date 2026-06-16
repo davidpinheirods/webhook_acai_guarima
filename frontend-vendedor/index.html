@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Açaí Guarima - Parceiro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 h-screen flex flex-col justify-center items-center px-4">
+
+    <div class="w-full max-w-sm bg-white rounded-2xl shadow-xl p-8">
+        <div class="text-center mb-8">
+            <div class="w-20 h-20 bg-purple-700 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
+                <span class="text-3xl text-white font-bold">AG</span>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-800">Açaí Guarima</h1>
+            <p class="text-sm text-gray-500 mt-1">Acesso do Vendedor</p>
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label for="pin" class="block text-sm font-medium text-gray-700 mb-2">Digite seu PIN</label>
+                <input 
+                    type="text" 
+                    id="pin" 
+                    class="w-full text-center text-3xl tracking-widest font-bold py-3 border-2 border-gray-300 rounded-xl focus:border-purple-600 focus:ring-0 uppercase transition-colors uppercase"
+                    placeholder="****"
+                    autocomplete="off"
+                    required
+                >
+            </div>
+
+            <div id="errorMessage" class="hidden bg-red-100 text-red-700 p-3 rounded-lg text-sm text-center font-medium">
+                PIN inválido.
+            </div>
+
+            <button 
+                type="submit" 
+                id="loginBtn"
+                class="w-full bg-purple-700 hover:bg-purple-800 text-white font-bold text-lg py-4 rounded-xl shadow-md transition-colors flex justify-center items-center">
+                <span>Entrar</span>
+            </button>
+        </form>
+    </div>
+
+    <script src="js/api/authApi.js"></script>
+    <script src="js/pages/login.js"></script>
+</body>
+</html>
