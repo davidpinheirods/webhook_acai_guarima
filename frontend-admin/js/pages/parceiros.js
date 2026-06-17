@@ -24,23 +24,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Sucesso
             msg.textContent = "Vendedor cadastrado com sucesso!";
-            msg.className = "text-sm font-bold p-2 rounded text-center bg-green-100 text-green-700 block";
+            msg.className = "text-sm font-bold p-2 rounded text-center bg-green-100 text-green-700 block mb-4";
             form.reset(); // Limpa o formulário
+            
+            // 1. ATUALIZA A TABELA AUTOMATICAMENTE APÓS CADASTRAR
+            carregarVendedores(); 
 
         } catch (error) {
             // Erro (ex: PIN já existe)
             msg.textContent = error.message;
-            msg.className = "text-sm font-bold p-2 rounded text-center bg-red-100 text-red-700 block";
+            msg.className = "text-sm font-bold p-2 rounded text-center bg-red-100 text-red-700 block mb-4";
         }
     });
 
-// Função para carregar os dados reais do banco
+    // Função para carregar os dados reais do banco
     async function carregarVendedores() {
         const tbody = document.getElementById('tabelaVendedores');
         tbody.innerHTML = '<tr><td colspan="4" class="py-4 text-center text-gray-500">Carregando...</td></tr>';
 
         try {
-            const response = await fetch('http://localhost:8000/admin/vendedores/');
+            // 2. PROÍBE O CACHE E OBRIGA A BUSCAR DO BANCO SEMPRE (Adeus, fantasmas!)
+            const response = await fetch('http://localhost:8000/admin/vendedores/', {
+                cache: 'no-store' 
+            });
+            
             const vendedores = await response.json();
 
             tbody.innerHTML = ''; // Limpa o "Carregando"
